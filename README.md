@@ -1,7 +1,7 @@
 Wordpress Plugin Candideit.org
 =============================
 
-Este plugin administra tus candidatos
+Este plugin permite desplegar la información de tus candidatos, por elección, creados en el portal http://candidate.org
 
 Instalación
 ===========
@@ -9,7 +9,7 @@ Instalación
 * Descargamos el código, descomprimimos y lo copiamos a la carpeta ~/wp-content/plugins/
 * Habilitamos el plugin desde el administrador de plugins
 * Nos dirigimos a la configuración del plugin que se encuentra en la categoría Herramientas
-* Ingresamos nuestro access_token y guardamos, sino lo tienes, debes solicitarlo en http://candideit.org/accounts/register/
+* Ingresamos nuestro nombre de usuario y nuestra API KEY. Sino tienes estos datos, debes solicitarlo en http://candideit.org/accounts/register/
 
 Licencia
 ========

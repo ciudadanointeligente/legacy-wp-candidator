@@ -1,4 +1,5 @@
 <div class="candideit-candidatos">
+    <h4>Candidatos</h4>
     <ul>
         <?php
         foreach ($aCandidatos as $c) {

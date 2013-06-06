@@ -70,3 +70,16 @@ function candideit_loscandidatos() {
         include "candideit-candidatos-front.php";
     }
 }
+
+function theme_styles()  
+{ 
+    // Register the style like this for a theme:  
+    // (First the unique name for the style (custom-style) then the src, 
+    // then dependencies and ver no. and media type)
+    $url_plugin = plugins_url('/candideit.org/css/candideit.org.css');
+    wp_register_style( 'custom-style', $url_plugin , array(), date('Ymd'), 'all' );
+
+    // enqueing:
+    wp_enqueue_style( 'custom-style' );
+}
+add_action('wp_enqueue_scripts', 'theme_styles');
