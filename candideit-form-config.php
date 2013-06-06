@@ -40,8 +40,30 @@
                     'username' => get_option('candideit_username'),
                     'api_key' => get_option('candideit_api_key')
                     );
-                $aData = candideit_getCandidatos($params);
-                $Candidatos = $aData->objects;
+
+                $aData = candideit_getElecciones($params);
+                $Elecciones = $aData->objects;
+            ?>
+            <tr>
+                <th scope="row">Elecciones</th>
+                <td>
+                    <ul>
+                        <?php
+                        foreach($Elecciones as $e) {
+                            $selected = ( get_option('candideit_election_id')==$e->id ) ? 'checked="checked"' : '' ;
+                        ?>
+                        <li><input type="radio" name="candideit_election_id" value="<?php echo $e->id ?>" <?php echo $selected ?>> <?php echo $e->name ?></li>
+                        <?php
+                        }
+                        ?>
+                    </ul>
+                </td>
+            </tr>
+            <?php    
+                if(get_option('candideit_election_id')) {
+                    $params['election_id'] = get_option('candideit_election_id');
+                    $aData = candideit_getCandidatos($params);
+                    $Candidatos = $aData->candidates;
             ?>
             <tr>
                 <th scope="row">Candidatos</th>
@@ -63,9 +85,8 @@
                     </fieldset>
                 </td>
             </tr>
-            
-            
             <?php
+                }
             }
             ?>
         </table>
