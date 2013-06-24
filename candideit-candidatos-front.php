@@ -9,6 +9,9 @@
                 
                 <h3><?php echo $c->name ?></h3>
                 <table>
+                    <tr>
+                        <th colspan="2">Antecedentes personales</th>
+                    </tr>
                 <?php
                 foreach ($c->personal_data as $p) {
                     ?>
@@ -21,8 +24,10 @@
                 ?>
                 </table>
 
-                <h4>Antecedentes</h4>
                 <table>
+                    <tr>
+                        <th colspan="2">Otros antecedentes</th>
+                    </tr>
                     <?php
                     foreach($c->backgrounds as $b) {
                         ?>

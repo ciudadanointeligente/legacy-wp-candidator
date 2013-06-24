@@ -9,15 +9,15 @@
 .candidator_org .container .candidate table {
   width: 100%;
 }
+.candidator_org .container .candidate table tr > th {
+  font-weight: bold;
+  text-transform: capitalize;
+}
 .candidator_org .container .candidate table tr:nth-child(even) {
   background-color: #eee;
 }
 .candidator_org .container .candidate h3 {
   font-size: 18px;
-  font-weight: bold;
-  text-transform: capitalize;
-}
-.candidator_org .container .candidate h4 {
   font-weight: bold;
   text-transform: capitalize;
 }
