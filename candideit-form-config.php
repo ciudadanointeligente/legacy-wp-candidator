@@ -50,10 +50,17 @@
                     <ul>
                         <?php
                         foreach($Elecciones as $e) {
+                            if($e->published) {
                             $selected = ( get_option('candideit_election_id')==$e->id ) ? 'checked="checked"' : '' ;
                         ?>
-                        <li><input type="radio" name="candideit_election_id" value="<?php echo $e->id ?>" <?php echo $selected ?>> <?php echo $e->name ?></li>
+                        <li>
+                            <input type="radio" name="candideit_election_id" id="e<?php echo $e->id ?>" value="<?php echo $e->id ?>" <?php echo $selected ?>> <label for="e<?php echo $e->id ?>"><?php echo $e->name ?></label>
+                            <!-- 
+                            <img src="<?php echo $e->logo ?>" alt="<?php echo $e->name ?>" height="80" width="80">
+                            -->
+                        </li>
                         <?php
+                            }
                         }
                         ?>
                     </ul>

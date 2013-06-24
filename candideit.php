@@ -10,6 +10,8 @@
   License: Copyleft
  */
 
+define('URLBASE','http://localhost:8000/api/v1/');
+
 function candideit_admin_action() {
     add_management_page("Candideit", "Candideit", 1, "candideit", "candideit_configuracion");
 }
@@ -39,7 +41,7 @@ function candideit_configuracion() {
 }
 
 function candideit_getElecciones($params = array()) {
-    $api_url = 'http://candideit.org/api/v1/election/?format=json&username='. $params['username'] .'&api_key='. $params['api_key'];
+    $api_url = URLBASE.'election/?format=json&username='. $params['username'] .'&api_key='. $params['api_key'];
     $aElecciones = file_get_contents($api_url);
     $aElecciones = json_decode($aElecciones);
 
@@ -47,7 +49,7 @@ function candideit_getElecciones($params = array()) {
 }
 
 function candideit_getCandidatos($params = array()) {
-    $api_url = 'http://candideit.org/api/v1/election/'. $params['election_id'] .'/?format=json&username='. $params['username'] .'&api_key='. $params['api_key'];
+    $api_url = URLBASE.'election/'. $params['election_id'] .'/?format=json&username='. $params['username'] .'&api_key='. $params['api_key'];
     $aCandidatos = file_get_contents($api_url);
     $aCandidatos = json_decode($aCandidatos);
 
@@ -57,12 +59,12 @@ function candideit_getCandidatos($params = array()) {
 function candideit_loscandidatos() {
     if (is_front_page()) {
     
-        $url = 'http://candideit.org/api/v1/election/'. get_option('candideit_election_id') .'/?format=json&username='. get_option('candideit_username') .'&api_key='. get_option('candideit_api_key');
+        $url = URLBASE.'election/'. get_option('candideit_election_id') .'/?format=json&username='. get_option('candideit_username') .'&api_key='. get_option('candideit_api_key');
         $json_info = file_get_contents($url);
         $aElections = json_decode($json_info);
 
         foreach ($aElections->candidates as $c) {
-            $url = 'http://candideit.org/api/v1/candidate/'. $c->id .'/?format=json&username='. get_option('candideit_username') .'&api_key='. get_option('candideit_api_key');
+            $url = URLBASE.'candidate/'. $c->id .'/?format=json&username='. get_option('candideit_username') .'&api_key='. get_option('candideit_api_key');
             $json_info = file_get_contents($url);
             $aCandidatos[] = json_decode($json_info);
         }
