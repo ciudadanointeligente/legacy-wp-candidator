@@ -1,5 +1,8 @@
 <div class="candidator_org">
     <h4>Candidatos</h4>
+    <div class="compare">
+        <ul></ul>
+    </div>
     <div class="container">
         <?php
         foreach ($aCandidatos as $c) {
@@ -8,6 +11,13 @@
                 <img src="<?php echo ($c->photo) ? 'http://127.0.0.1:8000'.$c->photo : 'http://placehold.it/200x200' ?>" width="200" height="200">
                 
                 <h3><?php echo $c->name ?></h3>
+                <div>
+                    <fieldset>
+                        <input data-candidate-name="<?php echo $c->name ?>" type="checkbox" name="candidato-<?php echo $c->id ?>" id="candidato-<?php echo $c->id ?>" value="<?php echo $c->id ?>"> 
+                        <label for="candidato-<?php echo $c->id ?>"> Comparar</label>
+                    </fieldset>
+                </div>
+                    
                 <table>
                     <tr>
                         <th colspan="2">Antecedentes personales</th>
