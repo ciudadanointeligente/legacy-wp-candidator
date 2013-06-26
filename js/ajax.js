@@ -15,16 +15,20 @@ jQuery(document).ready(function($) {
             $(".compare ul").append('<li data-lolo="'+candidate_id+'">'+candidate_name+'<a class="remove-candidate" href="#" data-candidate-id="'+candidate_id+'">x</a></li>');
             
             if(numberOfChecked==2) {
-                $(".compare").append('<input type="button" value="Comparar" onClick="comparar()">');
+                $(".compare").append('<input type="button" name="comparar" value="Comparar" onClick="comparar()">');
             }
         }
     });
 
     $(".remove-candidate").live('click', function(event){
         event.preventDefault();
-        //console.log( $(this).data('candidate-id') );
-        var lolo_id = $(this).data('candidate-id');
-        $('li').data('lolo-',lolo_id).remove();
-        //$("input:checkbox").val('id','candidato-'+lolo_id).attr('checked', false);
+        var candidate_id = $(this).data('candidate-id');
+        $(this).parent().remove();
+        $("input[name=candidato-"+candidate_id+"]").attr('checked', false);
+        
+        var numberOfChecked = $('input:checkbox:checked').length;
+        if(numberOfChecked<2) {
+            $("input[name=comparar]").remove();
+        }
     })
 });

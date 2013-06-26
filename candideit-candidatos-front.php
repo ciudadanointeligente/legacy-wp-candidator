@@ -8,7 +8,7 @@
         foreach ($aCandidatos as $c) {
             ?>
             <div class="candidate">
-                <img src="<?php echo ($c->photo) ? 'http://127.0.0.1:8000'.$c->photo : 'http://placehold.it/200x200' ?>" width="200" height="200">
+                <img src="<?php echo ($c->photo) ? 'http://127.0.0.1:8000'.$c->photo : 'http://placehold.it/200x200' ?>" width="100" height="100">
                 
                 <h3><?php echo $c->name ?></h3>
                 <div>
@@ -17,7 +17,7 @@
                         <label for="candidato-<?php echo $c->id ?>"> Comparar</label>
                     </fieldset>
                 </div>
-                    
+                <!--
                 <table>
                     <tr>
                         <th colspan="2">Antecedentes personales</th>
@@ -75,6 +75,7 @@
                     }
                     ?>
                 </table>
+                -->
             </div>
             <?php
         }
