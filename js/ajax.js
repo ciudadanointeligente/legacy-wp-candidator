@@ -25,7 +25,14 @@ jQuery(document).ready(function($) {
             $(".compare ul").append('<li data-id="'+candidate_id+'">'+candidate_name+' <a class="remove-candidate" href="#" data-candidate-id="'+candidate_id+'">x</a></li>');
             
             if(numberOfChecked==2) {
-                $(".compare").append('<input type="button" name="comparar" value="Comparar" onClick="comparar()">');
+                //$(".compare").append('<input type="button" name="comparar" value="Comparar" onClick="comparar()">');
+                $('.compare ul li').each( function(){
+                    var display_id = $(this).data('id');
+                    //console.log(display_id);
+                    $('#candidato-antecedentes-'+display_id).attr('style','display:block');
+                    $('#candidato-pregresp-'+display_id).attr('style','display:block');
+                })
+                
             }
         }
     });
@@ -40,7 +47,11 @@ jQuery(document).ready(function($) {
 
         var numberOfChecked = $('input:checkbox:checked').length;
         if(numberOfChecked<2) {
-            $("input[name=comparar]").remove();
+            //$("input[name=comparar]").remove();
+            //console.log(display_id);
+            $('#candidato-antecedentes-'+candidate_id).attr('style','display:none');
+            $('#candidato-pregresp-'+candidate_id).attr('style','display:none');
+            
         }
     })
 });
