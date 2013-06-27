@@ -5,24 +5,32 @@
   float: left;
   width: 150px;
   padding: 0px 5px;
-}
-.candidator_org .container .candidate table {
-  width: 100%;
-}
-.candidator_org .container .candidate table tr > th {
-  font-weight: bold;
-  text-transform: capitalize;
-}
-.candidator_org .container .candidate table tr:nth-child(even) {
-  background-color: #eee;
-}
-.candidator_org .container .candidate h3 {
-  font-size: 18px;
-  font-weight: bold;
-  text-transform: capitalize;
+  min-height: 200px;
 }
 .candidator_org .container .categ-title {
   font-weight: bold;
   font-size: 16px;
+  text-transform: capitalize;
+}
+.candidator_org .details-candidate {
+  float: left;
+  width: 47%;
+  border: 1px solid #eee;
+  padding: 0px 2px;
+  margin-left: 2px;
+}
+.candidator_org .details-candidate table {
+  width: 100%;
+}
+.candidator_org .details-candidate table tr > th {
+  font-weight: bold;
+  text-transform: capitalize;
+}
+.candidator_org .details-candidate table tr:nth-child(even) {
+  background-color: #eee;
+}
+.candidator_org .details-candidate h3 {
+  font-size: 18px;
+  font-weight: bold;
   text-transform: capitalize;
 }

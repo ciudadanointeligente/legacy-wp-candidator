@@ -10,7 +10,7 @@
   License: Copyleft
  */
 
-define('URLBASE','http://localhost:8000/api/v1/');
+define('URLBASE','http://candideit.org/api/v1/');
 
 // enqueue and localise scripts
  wp_enqueue_script( 'my-ajax-handle', plugin_dir_url( __FILE__ ) . 'js/ajax.js', array( 'jquery' ) );
