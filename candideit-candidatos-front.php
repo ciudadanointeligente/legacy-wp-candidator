@@ -8,9 +8,9 @@
         foreach ($aCandidatos as $c) {
             ?>
             <div class="candidate">
-                <img src="<?php echo ($c->photo) ? $c->photo : 'http://placehold.it/200x200' ?>" width="100" height="100">
+                <img src="<?php echo ($c->photo) ? $c->photo : 'http://placehold.it/200x200' ?>" width="45" height="45">
                 
-                <h3><?php echo $c->name ?></h3>
+                <h4><?php echo $c->name ?></h4>
                 <div>
                     <fieldset>
                         <input data-candidate-name="<?php echo $c->name ?>" type="checkbox" name="candidato-<?php echo $c->id ?>" id="candidato-<?php echo $c->id ?>" value="<?php echo $c->id ?>"> 
