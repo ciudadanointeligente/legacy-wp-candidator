@@ -3,9 +3,9 @@
 }
 .candidator_org .container .candidate {
   float: left;
-  width: 150px;
+  width: 140px;
   padding: 0px 5px;
-  min-height: 200px;
+  min-height: 210px;
 }
 .candidator_org .container .categ-title {
   font-weight: bold;
