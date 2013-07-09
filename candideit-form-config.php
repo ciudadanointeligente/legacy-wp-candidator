@@ -41,7 +41,7 @@
                     'api_key' => get_option('candideit_api_key')
                     );
 
-                $aData = candideit_getElecciones($params);
+                $aData = candideitorg::getElecciones($params);
                 $Elecciones = $aData->objects;
             ?>
             <tr>
@@ -69,7 +69,7 @@
             <?php    
                 if(get_option('candideit_election_id')) {
                     $params['election_id'] = get_option('candideit_election_id');
-                    $aData = candideit_getCandidatos($params);
+                    $aData = candideitorg::getCandidatos($params);
                     $Candidatos = $aData->candidates;
             ?>
             <tr>

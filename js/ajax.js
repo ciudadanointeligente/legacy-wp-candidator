@@ -15,6 +15,18 @@ function inArray(needle, haystack) {
 }
 
 jQuery(document).ready(function($) {
+    $("#candidato_a").change(function(){
+        var candidato_id = $(this).val();
+        $('.cand_a').attr('style','display:none');
+        $('#candidato_a_'+candidato_id).attr('style','display:block');
+    });
+    $("#candidato_b").change(function(){
+        var candidato_id = $(this).val();
+        $('.cand_b').attr('style','display:none');
+        $('#candidato_b_'+candidato_id).attr('style','display:block');
+    });
+    
+    /*
     $("input[type=checkbox]").on('click', function(){
         $(this).attr('disabled','disabled');
         var numberOfChecked = $('input[type=checkbox]:checked').length;
@@ -54,4 +66,5 @@ jQuery(document).ready(function($) {
             
         }
     })
+    */
 });
