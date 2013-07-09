@@ -122,7 +122,7 @@ function configuracion() {
       }
   }
 
-  include "candideit-form-config.php";
+  include "candideitorg-form-config.php";
 }
 
 function getElecciones($params = array()) {
@@ -154,7 +154,7 @@ function loscandidatos() {
           $aCandidatos[] = json_decode($json_info);
       }
       
-      include "candideit-candidatos-front.php";
+      include "candideitorg-candidatos-front.php";
   }
 }
 
@@ -164,7 +164,7 @@ function theme_styles() {
   // Register the style ike this for a theme:  
   // (First the unique name for the style (custom-style) then the src, 
   // then dependencies and ver no. and media type)
-  $url_plugin = plugins_url('/css/candideit.org.css', __FILE__);
+  $url_plugin = plugins_url('/css/candideitorg.css', __FILE__);
   wp_register_style( 'custom-style', $url_plugin , array(), date('Ymd'), 'all' );
 
   // enqueing:
@@ -173,11 +173,8 @@ function theme_styles() {
 add_action('wp_enqueue_scripts', 'theme_styles');
 
 function my_scripts_method() {
-  wp_enqueue_script(
-    'custom-script',
-    plugins_url('/js/ajax.js', __FILE__),
-    array( 'jquery' )
-  );
+  wp_enqueue_script( 'custom-script', plugins_url('/js/candideitorg.js', __FILE__), array( 'jquery' ) );
 }
 
 add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
+

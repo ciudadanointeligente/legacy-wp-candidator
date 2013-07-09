@@ -39,17 +39,45 @@
             ?>
             <div id="candidato-<?php echo $c->slug ?>" class="candidato" style="display:none">
                 <h5><?php echo $c->name ?></h5>
+                <div class="photo-candidato">
+                    <img src="<?php echo $c->photo ?>" alt="<?php echo $c->name ?>">
+                </div>
                 <table class="table-striped">
-                <?php
-                foreach ($c->personal_data as $p) {
-                ?>
-                <tr>
-                    <td><?php echo $p->label ?></td>
-                    <td><?php echo $p->value ?></td>
-                </tr>
-                <?php
-                }
-                ?>
+                    <?php
+                    foreach ($c->personal_data as $p) {
+                    ?>
+                    <tr>
+                        <td><?php echo $p->label ?></td>
+                        <td><?php echo $p->value ?></td>
+                    </tr>
+                    <?php
+                    }
+                    ?>
+                </table>
+                <div class="redes-candidato">
+                    <ul>
+                        <?php
+                        foreach ($c->links as $l) {
+                        ?>
+                        <li><a href="<?php echo $l->url ?>" target="_blank"><?php echo $l->name ?></a></li>
+                        <?php
+                        }
+                        ?>
+                    </ul>
+                </div>
+                <table class="">
+                    <?php
+                    foreach ($c->categories as $categ) {
+                        foreach ($categ->questions as $q) {
+                    ?>
+                    <tr>
+                        <td><?php echo $q->question ?></td>
+                        <td><?php echo $q->answer->caption ?></td>
+                    </tr>
+                    <?php
+                        }
+                    }
+                    ?>
                 </table>
                 <ul>
                     <li><a href="#perfiles" class="volver" data-candidato-slug="<?php echo $c->slug ?>">Revisa los perfiles</a></li>
@@ -158,3 +186,19 @@
         </div>
     </div>
 </div>
+<script>
+    jQuery(document).ready(function($) {
+        <?php
+        foreach ($aCandidatos as $c) 
+        {
+        ?>
+        if(location.hash == '#<?php echo $c->slug ?>') {
+            $('.perfiles').attr('style','display:none');
+            $('.candidato').attr('style','display:none');
+            $('#candidato-<?php echo $c->slug ?>').attr('style', 'display:block');
+        }
+        <?php
+        }
+        ?>
+    })
+</script>

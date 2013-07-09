@@ -1,0 +1,10 @@
+.candideit-candidatos h4 {
+  font-weight: bolder;
+  padding-bottom: 20px;
+  font-size: 18px;
+}
+.candideit-candidatos ul > li {
+  list-style: none;
+  float: left;
+  width: 180px;
+}

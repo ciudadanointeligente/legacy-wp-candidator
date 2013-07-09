@@ -1,4 +1,4 @@
-<div id="message" class="<?=$msj_class?>"><?=$msj?></div>
+<div id="message" class="<?php echo $msj_class ?>"><?php echo $msj ?></div>
 <div class="wrap">
     <h2>Configuración Candideit.org</h2>
     
