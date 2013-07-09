@@ -53,6 +53,19 @@ jQuery(document).ready(function($) {
         $('#candidato-b-vs-slug-'+CandidatoSlug).attr('style','display:block');
     })
 
+    if( location.hash.split('/').length >= 3 ) {
+        var aData = location.hash.split('/');
+        
+        $('.perfiles').attr('style','display:none');
+        $('#frente-a-frente').attr('style', 'display:block');
+
+        $('select[name="candidato-a"]').val( aData[1] );
+        $('#candidato-a-vs-slug-'+aData[1]).attr('style','display:block');
+
+        $('select[name="candidato-b"]').val( aData[2] );
+        $('#candidato-b-vs-slug-'+aData[2]).attr('style','display:block');
+    }
+
     if(location.hash == '#perfiles') {
         $('.perfiles').attr('style','display:block');
         $('.candidato').attr('style','display:none');

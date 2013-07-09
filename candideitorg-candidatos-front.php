@@ -93,10 +93,6 @@
             <div class="span6">
                 <ul>
                     <li><a href="#perfiles" class="volver">Revisa los perfiles</a></li>
-                    <!--
-                    <li><a href="#" class="frente-a-frente" data-candidato-id="<?php echo $c->id ?>">Frente a frente</a></li>
-                    <li>Encuentra tu 1/2 naranja</li>
-                    -->
                 </ul>
             </div>
             <div class="span3">
