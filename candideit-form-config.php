@@ -4,11 +4,10 @@
     
     <ul class="pasos">
         <li>Primero debes ingresar tu llave de acceso (API Key) y guardar</li>
-        <li>Finalmente copia y pega el siguiente código en tu template <code>&lt;?= candideit_loscandidatos() ?&gt;</code></li>
     </ul>
 
     <form method="post" name="elFormulario" action="">
-        <?= settings_fields('candideit_options'); ?>
+        <?php echo settings_fields('candideit_options'); ?>
         <h3>Configuración General</h3>
         <table class="form-table">
             <tr>
@@ -35,13 +34,14 @@
                 </td>
             </tr>
             <?php
-            if (get_option('candideit_api_key') && get_option('candideit_username')) {
+            if (get_option('candideit_api_key') && get_option('candideit_username')) 
+            {
                 $params = array( 
                     'username' => get_option('candideit_username'),
                     'api_key' => get_option('candideit_api_key')
                     );
 
-                $aData = candideitorg::getElecciones($params);
+                $aData = getElecciones($params);
                 $Elecciones = $aData->objects;
             ?>
             <tr>
@@ -49,7 +49,8 @@
                 <td>
                     <ul>
                         <?php
-                        foreach($Elecciones as $e) {
+                        foreach($Elecciones as $e) 
+                        {
                             if($e->published) {
                             $selected = ( get_option('candideit_election_id')==$e->id ) ? 'checked="checked"' : '' ;
                         ?>
@@ -67,9 +68,10 @@
                 </td>
             </tr>
             <?php    
-                if(get_option('candideit_election_id')) {
+                if(get_option('candideit_election_id')) 
+                {
                     $params['election_id'] = get_option('candideit_election_id');
-                    $aData = candideitorg::getCandidatos($params);
+                    $aData = getCandidatos($params);
                     $Candidatos = $aData->candidates;
             ?>
             <tr>
@@ -80,8 +82,9 @@
                         <label for="cha_servicios">
                             <ul>
                                 <?php
-                                foreach( $Candidatos as $c ) {
-                                    $selected = '';//(get_option('cha_servicio') == $servicio->id) ? 'selected="selected"' : '';
+                                foreach( $Candidatos as $c ) 
+                                {
+                                    $selected = '';
                                 ?>
                                 <li><?php echo $c->id ?>, <?php echo $c->name ?></li>
                                 <?php

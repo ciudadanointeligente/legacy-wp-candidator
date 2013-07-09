@@ -1,70 +1,67 @@
-function comparar(){
-    jQuery.post(the_ajax_script.ajaxurl, { 'action': 'the_ajax_hook' }, 
-        function(response_from_the_action_function) {
-            //jQuery("#compare ul").html(response_from_the_action_function);
-            console.log(response_from_the_action_function);
-        });
-}
-
-function inArray(needle, haystack) {
-    var length = haystack.length;
-    for(var i = 0; i < length; i++) {
-        if(haystack[i] == needle) return true;
-    }
-    return false;
+// In case we forget to take out console statements. IE becomes very unhappy when we forget. Let's not make IE unhappy
+if(typeof(console) === 'undefined') {
+    var console = {};
+    console.log = console.error = console.info = console.debug = console.warn = console.trace = console.dir = console.dirxml = console.group = console.groupEnd = console.time = console.timeEnd = console.assert = console.profile = function() {};
 }
 
 jQuery(document).ready(function($) {
-    $("#candidato_a").change(function(){
-        var candidato_id = $(this).val();
-        $('.cand_a').attr('style','display:none');
-        $('#candidato_a_'+candidato_id).attr('style','display:block');
-    });
-    $("#candidato_b").change(function(){
-        var candidato_id = $(this).val();
-        $('.cand_b').attr('style','display:none');
-        $('#candidato_b_'+candidato_id).attr('style','display:block');
-    });
-    
-    /*
-    $("input[type=checkbox]").on('click', function(){
-        $(this).attr('disabled','disabled');
-        var numberOfChecked = $('input[type=checkbox]:checked').length;
-        if(numberOfChecked<=2) {
-            var candidate_name = $(this).data('candidate-name');
-            var candidate_id = $(this).val();
-            
-            $(".compare ul").append('<li data-id="'+candidate_id+'">'+candidate_name+' <a class="remove-candidate" href="#" data-candidate-id="'+candidate_id+'">x</a></li>');
-            
-            if(numberOfChecked==2) {
-                //$(".compare").append('<input type="button" name="comparar" value="Comparar" onClick="comparar()">');
-                $('.compare ul li').each( function(){
-                    var display_id = $(this).data('id');
-                    //console.log(display_id);
-                    $('#candidato-antecedentes-'+display_id).attr('style','display:block');
-                    $('#candidato-pregresp-'+display_id).attr('style','display:block');
-                })
-                
-            }
-        }
-    });
+    $('.perfiles a').on('click', function(e){
+        var CandidatoSlug = $(this).data('candidato-slug');
+        $('#candidato-'+CandidatoSlug).attr('style','display:block');
+        $('.perfiles').attr('style','display:none');
+    })
 
-    $(".remove-candidate").live('click', function(event){
-        event.preventDefault();
-        var candidate_id = $(this).data('candidate-id');
-        
-        $(this).parent().remove();
-        $("input[name=candidato-"+candidate_id+"]").attr('checked', false);
-        $("input[name=candidato-"+candidate_id+"]").removeAttr('disabled');
+    $('.volver').on('click', function(e){
+        var CandidatoSlug = $(this).data('candidato-slug');
+        $('.perfiles').attr('style','display:block');
+        $('#candidato-'+CandidatoSlug).attr('style','display:none');
+        $('.candidato').attr('style','display:none');
+        $('#frente-a-frente').attr('style', 'display:none');
+    })
 
-        var numberOfChecked = $('input:checkbox:checked').length;
-        if(numberOfChecked<2) {
-            //$("input[name=comparar]").remove();
-            //console.log(display_id);
-            $('#candidato-antecedentes-'+candidate_id).attr('style','display:none');
-            $('#candidato-pregresp-'+candidate_id).attr('style','display:none');
-            
+    $('.frente-a-frente').on('click', function(e){
+
+        $('.perfiles').attr('style','display:none');
+        $('#frente-a-frente').attr('style', 'display:block');
+
+        if( $(this).data('candidato-slug') ) {
+            $('.candidato').attr('style','display:none');
+            $('.candidato-a-vs').attr('style','display:none');
+            $('.candidato-b-vs').attr('style','display:none');
+            $('select[name="candidato-b"]').val(0);
+
+            $('select[name="candidato-a"]').val( $(this).data('candidato-slug') );
+            $('#candidato-a-vs-slug-'+$(this).data('candidato-slug')).attr('style','display:block');
+        } else {
+            $('select[name="candidato-a"]').val(0);
+            $('select[name="candidato-b"]').val(0);
+            $('.candidato').attr('style','display:none');
+            $('.candidato-a-vs').attr('style','display:none');
+            $('.candidato-b-vs').attr('style','display:none');
         }
     })
-    */
+
+    $('select[name="candidato-a"]').live('change',function(){
+        var CandidatoSlug = $(this).val();
+        $('.candidato-a-vs').attr('style','display:none');
+        $('#candidato-a-vs-slug-'+CandidatoSlug).attr('style','display:block');
+    })
+
+    $('select[name="candidato-b"]').live('change',function(){
+        var CandidatoSlug = $(this).val();
+        $('.candidato-b-vs').attr('style','display:none');
+        $('#candidato-b-vs-slug-'+CandidatoSlug).attr('style','display:block');
+    })
+
+    if(location.hash == '#perfiles') {
+        $('.perfiles').attr('style','display:block');
+        $('.candidato').attr('style','display:none');
+        $('#frente-a-frente').attr('style', 'display:none');
+    }
+
+    if(location.hash == '#frente-a-frente') {
+        $('.perfiles').attr('style','display:none');
+        $('#frente-a-frente').attr('style', 'display:block');
+    }
+
 });
