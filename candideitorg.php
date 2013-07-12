@@ -142,8 +142,15 @@ function getCandidatos($params = array()) {
 }
 
 function loscandidatos() {
+
+  $request = $_SERVER['REQUEST_URI'];   
+  $matches = array();
+
+  if(preg_match('#^/candideitorg/$#', $request, $matches)){
   
-  if ( $_SERVER["REQUEST_URI"] == '/candideitorg/' OR  $_SERVER["REQUEST_URI"] == '/plugincandideitorg/candideitorg/' ) {
+
+  
+#  if ( $_SERVER["REQUEST_URI"] == '/candideitorg/' OR  $_SERVER["REQUEST_URI"] == '/plugincandideitorg/candideitorg/' ) {
   
       $url = URLBASE.'election/'. get_option('candideit_election_id') .'/?format=json&username='. get_option('candideit_username') .'&api_key='. get_option('candideit_api_key');
       $json_info = file_get_contents($url);
