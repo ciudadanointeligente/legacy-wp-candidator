@@ -143,26 +143,21 @@ function getCandidatos($params = array()) {
 
 function loscandidatos() {
 
-  $request = $_SERVER['REQUEST_URI'];   
-  $matches = array();
+  global $post;
+  $post_slug = $post->post_name;
 
-  if(preg_match('#^/candideitorg/$#', $request, $matches)){
-  
+  if ( $post_slug == 'candideitorg' ) {
+    $url = URLBASE.'election/'. get_option('candideit_election_id') .'/?format=json&username='. get_option('candideit_username') .'&api_key='. get_option('candideit_api_key');
+    $json_info = file_get_contents($url);
+    $aElections = json_decode($json_info);
 
-  
-#  if ( $_SERVER["REQUEST_URI"] == '/candideitorg/' OR  $_SERVER["REQUEST_URI"] == '/plugincandideitorg/candideitorg/' ) {
-  
-      $url = URLBASE.'election/'. get_option('candideit_election_id') .'/?format=json&username='. get_option('candideit_username') .'&api_key='. get_option('candideit_api_key');
-      $json_info = file_get_contents($url);
-      $aElections = json_decode($json_info);
-
-      foreach ($aElections->candidates as $c) {
-          $url = URLBASE.'candidate/'. $c->id .'/?format=json&username='. get_option('candideit_username') .'&api_key='. get_option('candideit_api_key');
-          $json_info = file_get_contents($url);
-          $aCandidatos[] = json_decode($json_info);
-      }
-      
-      include "candideitorg-candidatos-front.php";
+    foreach ($aElections->candidates as $c) {
+        $url = URLBASE.'candidate/'. $c->id .'/?format=json&username='. get_option('candideit_username') .'&api_key='. get_option('candideit_api_key');
+        $json_info = file_get_contents($url);
+        $aCandidatos[] = json_decode($json_info);
+    }
+    
+    include "candideitorg-candidatos-front.php";
   }
 }
 
