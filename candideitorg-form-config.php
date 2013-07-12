@@ -1,20 +1,21 @@
 <div id="message" class="<?php echo $msj_class ?>"><?php echo $msj ?></div>
 <div class="wrap">
-    <h2>Configuración Candideit.org</h2>
+    <h2><?php _e( 'Configuration', 'candideitorg' ) ?> Candideit.org</h2>
     
-    <ul class="pasos">
-        <li>Primero debes ingresar tu llave de acceso (API Key) y guardar</li>
-    </ul>
+    <ol class="pasos">
+        <li><?php _e( 'You need insert your Username and your API KEY and then press Save Changes', 'candideitorg') ?></li>
+        <li><?php _e( 'Choose and Election and then press Save Changes', 'candideitorg') ?></li>
+    </ol>
 
     <form method="post" name="elFormulario" action="">
         <?php echo settings_fields('candideit_options'); ?>
-        <h3>Configuración General</h3>
+        <h3><?php _e( 'General Configuration', 'candideitorg-general-configuration') ?></h3>
         <table class="form-table">
             <tr>
-                <th scope="row">Username</th>
+                <th scope="row"><?php _e( 'Username', 'candideitorg-username') ?></th>
                 <td>
                     <fieldset>
-                        <legend class="screen-reader-text"><span>Username</span></legend>
+                        <legend class="screen-reader-text"><span><?php _e( 'Username', 'candideitorg') ?></span></legend>
                         <label for="candideit_username">
                             <input type="text" name="candideit_username" id="candideit_username" value="<?php echo (get_option('candideit_username')) ? get_option('candideit_username') : '' ?>" />
                         </label>
@@ -22,13 +23,13 @@
                 </td>
             </tr>
             <tr>
-                <th scope="row">Código de acceso (API Key)</th>
+                <th scope="row"><?php _e( 'API Key', 'candideitorg-api-key') ?></th>
                 <td>
                     <fieldset>
-                        <legend class="screen-reader-text"><span>Código de acceso (API Key)</span></legend>
+                        <legend class="screen-reader-text"><span><?php _e( 'API Key', 'candideitorg') ?> (API Key)</span></legend>
                         <label for="candideit_api_key">
                             <input type="text" name="candideit_api_key" id="candideit_api_key" value="<?php echo (get_option('candideit_api_key')) ? get_option('candideit_api_key') : '' ?>" />
-                            <a href="http://candideit.org/accounts/register/">Puedes solicitar tu API Key desde acá</a>
+                            <a href="http://candideit.org/accounts/register/"><?php _e( 'You can create and API Key from here', 'candideitorg') ?></a>
                         </label>
                     </fieldset>
                 </td>
@@ -45,7 +46,7 @@
                 $Elecciones = $aData->objects;
             ?>
             <tr>
-                <th scope="row">Elecciones</th>
+                <th scope="row"><?php _e( 'Elections', 'candideitorg') ?></th>
                 <td>
                     <ul>
                         <?php
@@ -75,10 +76,10 @@
                     $Candidatos = $aData->candidates;
             ?>
             <tr>
-                <th scope="row">Candidatos</th>
+                <th scope="row"><?php _e( 'Candidates', 'candideitorg-candidates') ?></th>
                 <td>
                     <fieldset>
-                        <legend class="screen-reader-text"><span>Candidatos</span></legend>
+                        <legend class="screen-reader-text"><span><?php _e( 'Candidates', 'candideitorg-candidates') ?></span></legend>
                         <label for="cha_servicios">
                             <ul>
                                 <?php

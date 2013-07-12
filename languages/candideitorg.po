@@ -1,0 +1,62 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: candideitorg\n"
+"POT-Creation-Date: 2013-07-12 16:57-0300\n"
+"PO-Revision-Date: 2013-07-12 17:37-0300\n"
+"Last-Translator: \n"
+"Language-Team: Ciudadano Inteligente <devteam@ciudadanointeligente.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: ..\n"
+
+#: ../candideitorg-form-config.php:3
+msgid "Configuration"
+msgstr "Configuración"
+
+#: ../candideitorg-form-config.php:6
+msgid ""
+"You need insert your Username and your API KEY and then press Save Changes"
+msgstr ""
+"Necesitas ingresar tu Nombre de Usuario y tu API Key y luego presionar "
+"Guardar Cambios"
+
+#: ../candideitorg-form-config.php:7
+msgid "Choose and Election and then press Save Changes"
+msgstr "Selecciona una Elección y luego presiona Guardar Cambios"
+
+#: ../candideitorg-form-config.php:12
+msgid "General Configuration"
+msgstr "Configuración General"
+
+#: ../candideitorg-form-config.php:15 ../candideitorg-form-config.php:18
+msgid "Username"
+msgstr "Nombre de usuario"
+
+#: ../candideitorg-form-config.php:26 ../candideitorg-form-config.php:29
+msgid "API Key"
+msgstr "API Key"
+
+#: ../candideitorg-form-config.php:32
+msgid "You can create and API Key from here"
+msgstr "Puedes crear tu API KEY desde acá"
+
+#: ../candideitorg-form-config.php:49
+msgid "Elections"
+msgstr "Elecciones"
+
+#: ../candideitorg-form-config.php:79 ../candideitorg-form-config.php:82
+msgid "Candidates"
+msgstr "Candidatos"
+
+#: ../candideitorg.php:113
+msgid "You dont have permission to access here"
+msgstr "No tienes suficientes permisos para acceder acá"
+
+#: ../candideitorg.php:125
+msgid "Update data successfully :)"
+msgstr "Datos actualizacos correctamente :)"

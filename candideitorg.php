@@ -1,15 +1,20 @@
 <?php
-
 /*
   Plugin Name: Candideit.org
   Plugin URI: https://github.com/ciudadanointeligente/candideit.org-wp
-  Description: Retorna información de Candideit.org
-  Author: Fundación Ciudadano Inteligente
+  Description: Displays information for candidates in elections set to be administered through the platform http://candideit.org/
+  Author: Fundación Ciudadano Inteligente - Smart Citizen Foundation
   Version: 1.0
   Author URI: http://www.ciudadanointeligente.org
   License: Copyleft
  */
 define('URLBASE','http://candideit.org/api/v1/');
+
+function candideitorg_init() {
+  $plugin_dir =  plugin_basename( __FILE__ );
+  $loaded = load_plugin_textdomain( 'candideitorg', false, dirname($plugin_dir).'/languages/' );
+}
+add_action('plugins_loaded', 'candideitorg_init');
 
 function activate() 
 {
@@ -105,7 +110,7 @@ add_action('admin_menu', 'admin_action' );
 
 function configuracion() {
   if (!current_user_can('manage_options')) {
-      wp_die(__('You do not have sufficient permissions to access this page.'));
+      wp_die( __('You dont have permission to access here', 'candideitorg') );
   }
   
   $msj = '';
@@ -117,7 +122,7 @@ function configuracion() {
       ( $_POST['candideit_election_id'] ) ? update_option('candideit_election_id', $_POST['candideit_election_id']) : update_option('candideit_election_id', '');
 
       if ( ($_POST['candideit_api_key']) && ($_POST['candideit_username']) ) {
-          $msj = 'Datos actualizados correctamente :)';
+          $msj = __( 'Update data successfully :)', 'candideitorg' );
           $msj_class = 'updated';
       }
   }
@@ -164,13 +169,9 @@ function loscandidatos() {
 add_filter( 'the_content', 'loscandidatos' );
 
 function theme_styles() { 
-  // Register the style ike this for a theme:  
-  // (First the unique name for the style (custom-style) then the src, 
-  // then dependencies and ver no. and media type)
   $url_plugin = plugins_url('/css/candideitorg.css', __FILE__);
   wp_register_style( 'custom-style', $url_plugin , array(), date('Ymd'), 'all' );
 
-  // enqueing:
   wp_enqueue_style( 'custom-style' );
 }
 add_action('wp_enqueue_scripts', 'theme_styles');
